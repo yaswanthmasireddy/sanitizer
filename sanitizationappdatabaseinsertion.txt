@@ -1,0 +1,12 @@
+import json
+import boto3
+
+dynamoDB=boto3.resource('dynamodb')
+table=dynamoDB.Table('sanitizeMonitoringAppDB')
+
+def lambda_handler(event, context):
+    print("Event")
+    print(event)
+    table.put_item(Item=event)
+    return{"code":200,"message":"Data is inserted"}
+   
